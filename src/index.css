@@ -1,0 +1,276 @@
+@import 'tailwindcss';
+@import 'lenis/dist/lenis.css';
+
+@theme {
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Karla', ui-sans-serif, system-ui, sans-serif;
+
+  /* Light, airy surfaces; darks and gold taken from the Plumeria logo
+     (espresso-maroon ground, warm tan mark). */
+  --color-cream: #fbf6ec;
+  --color-petal: #fffdf8;
+  --color-sand: #f3ead9;
+  --color-line: #e4d9c5;
+  --color-ink: #1f0b0d;
+  --color-espresso: #2b1114;
+  --color-moss: #6a5852;
+  --color-yolk: #e8b54a;
+  --color-gold: #d8c49a; /* the logo's tan */
+  --color-tan: #ead8b8;
+  --color-bronze: #86652a;
+  --color-blush: #f4c9be;
+  --color-coral: #b8452c;
+  --color-coral-deep: #9a3620;
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    scroll-padding-top: 5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-variation-settings: 'SOFT' 100, 'WONK' 0;
+    font-weight: 380;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-coral);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background: var(--color-yolk);
+    color: var(--color-ink);
+  }
+}
+
+@layer components {
+  .container-page {
+    width: 100%;
+    max-width: 76rem;
+    margin-inline: auto;
+    padding-inline: clamp(1.25rem, 5vw, 3rem);
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .eyebrow::before {
+    content: '';
+    width: 2rem;
+    height: 1px;
+    background: currentColor;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 3rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    letter-spacing: 0.01em;
+    cursor: pointer;
+    touch-action: manipulation;
+    transition:
+      background-color 0.25s var(--ease-out-soft),
+      color 0.25s var(--ease-out-soft),
+      border-color 0.25s var(--ease-out-soft),
+      transform 0.25s var(--ease-out-soft);
+  }
+
+  .btn:active {
+    transform: scale(0.97);
+  }
+
+  .btn-primary {
+    background: var(--color-coral);
+    color: #fff;
+  }
+
+  .btn-primary:hover {
+    background: var(--color-coral-deep);
+  }
+
+  .btn-ghost-light {
+    border: 1px solid rgb(255 255 255 / 0.6);
+    color: #fff;
+  }
+
+  .btn-ghost-light:hover {
+    background: #fff;
+    color: var(--color-ink);
+  }
+
+  .btn-ghost-dark {
+    border: 1px solid var(--color-ink);
+    color: var(--color-ink);
+  }
+
+  .btn-ghost-dark:hover {
+    background: var(--color-ink);
+    color: var(--color-cream);
+  }
+
+  /* Underline that draws in from the left on hover. */
+  .link-draw {
+    background: linear-gradient(currentColor, currentColor) left bottom / 0 1px no-repeat;
+    transition: background-size 0.35s var(--ease-out-soft);
+  }
+
+  .link-draw:hover,
+  .link-draw:focus-visible {
+    background-size: 100% 1px;
+  }
+
+  .field {
+    width: 100%;
+    min-height: 3rem;
+    padding: 0.7rem 0.9rem;
+    border: 1px solid var(--color-line);
+    border-radius: 0.75rem;
+    background: var(--color-petal);
+    color: var(--color-ink);
+    font: inherit;
+    transition:
+      border-color 0.2s,
+      box-shadow 0.2s;
+  }
+
+  .field:hover {
+    border-color: var(--color-moss);
+  }
+
+  .field:focus-visible {
+    outline: none;
+    border-color: var(--color-coral);
+    box-shadow: 0 0 0 3px rgb(184 69 44 / 0.2);
+  }
+
+  .field[aria-invalid='true'] {
+    border-color: var(--color-coral);
+  }
+}
+
+/* Loading screen (markup in index.html). Background matches the logo file's
+   own ground so the square image has no visible edge. */
+html.is-loading {
+  overflow: hidden;
+}
+
+#splash {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 1.5rem;
+  background: #150103;
+  transition:
+    opacity 0.8s var(--ease-out-soft),
+    visibility 0.8s;
+}
+
+#splash.is-leaving {
+  opacity: 0;
+  visibility: hidden;
+}
+
+#splash img {
+  width: min(72vw, 24rem);
+  height: auto;
+  animation: splash-logo 1.2s var(--ease-out-soft) both;
+}
+
+.splash-bar {
+  width: min(40vw, 10rem);
+  height: 2px;
+  overflow: hidden;
+  border-radius: 2px;
+  background: rgb(216 196 154 / 0.22);
+}
+
+.splash-bar::after {
+  content: '';
+  display: block;
+  height: 100%;
+  background: var(--color-gold);
+  transform-origin: left;
+  animation: splash-bar 2.4s ease-in-out both;
+}
+
+@keyframes splash-logo {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+}
+
+@keyframes splash-bar {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes scroll-cue {
+  0% {
+    transform: translateY(-100%);
+  }
+  60%,
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

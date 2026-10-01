@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" class="is-loading">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Only this site's own files, Google Fonts and the Google Maps embed may load. -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; frame-src https://www.google.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'"
+    />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="theme-color" content="#FBF6EC" />
+    <meta property="og:type" content="restaurant" />
+    <meta property="og:title" content="Plumeria — Kitchen • Espresso" />
+    <meta
+      property="og:description"
+      content="Café and bistro on Jessore Road, Habra. Pizza, burgers, coolers and proper coffee, open every day 12–11 pm."
+    />
+    <link rel="preload" as="image" href="/images/logo-large.webp" type="image/webp" />
+    <link rel="preload" as="image" href="/frames/frame-001.webp" type="image/webp" />
+    <meta
+      name="description"
+      content="Plumeria — Kitchen • Espresso. A café and bistro serving all-day plates and proper coffee since 2023."
+    />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..600,0..100;1,9..144,300..600,0..100&family=Karla:wght@400..700&display=swap"
+    />
+    <title>Plumeria — Kitchen • Espresso</title>
+  </head>
+  <body>
+    <!-- Loading screen: plain HTML so it paints before any script runs.
+         src/main.jsx fades it out (styles are in src/index.css). -->
+    <div id="splash" role="status" aria-label="Loading Plumeria" data-lenis-prevent>
+      <img src="/images/logo-large.webp" alt="" width="880" height="880" />
+      <span class="splash-bar"></span>
+    </div>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

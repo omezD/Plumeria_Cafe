@@ -1,0 +1,14 @@
+# Dependencies and build output
+node_modules
+dist
+*.local
+
+# Local tooling
+.claude
+
+# Original source media. The web-ready versions live in public/.
+/hero_zip
+/assets
+/courtyard_photo.png
+/kitchen_photo.png
+/profile_logo.jpg
