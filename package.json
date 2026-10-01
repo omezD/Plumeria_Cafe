@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "serve": "vite build && vite preview --port 5173 --strictPort"
+    "serve": "vite build && vite preview --port 5173 --strictPort",
+    "deploy": "vite build && netlify deploy --prod --dir=dist"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",

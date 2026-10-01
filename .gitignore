@@ -12,3 +12,6 @@ dist
 /courtyard_photo.png
 /kitchen_photo.png
 /profile_logo.jpg
+
+# Netlify CLI link state
+.netlify
