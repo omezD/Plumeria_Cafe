@@ -14,6 +14,7 @@ import Guests from './components/Guests'
 import Contact from './components/Contact'
 import Location from './components/Location'
 import Footer from './components/Footer'
+import MusicToggle from './components/MusicToggle'
 
 export default function App() {
   const rootRef = useRef(null)
@@ -105,6 +106,7 @@ export default function App() {
         <Location />
       </main>
       <Footer />
+      <MusicToggle />
     </div>
   )
 }

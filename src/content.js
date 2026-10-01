@@ -13,6 +13,12 @@ export const brand = {
   currency: '₹',
 }
 
+// Background music. Leave `src` empty to use the built-in generated café loop,
+// or put an audio file in /public/audio and point to it, e.g. asset('/audio/music.mp3').
+export const music = {
+  src: '',
+}
+
 export const nav = [
   { label: 'Story', href: '#story' },
   { label: 'Menu', href: '#menu' },

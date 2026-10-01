@@ -40,6 +40,10 @@ menu, gallery, hours, reviews, contact and location.
   <img src="docs/screenshots/12-mobile-menu.jpg" alt="Menu on a phone" width="260" />
 </p>
 
+**Background music button** (bottom-left corner)
+
+![Hero with the music button switched on](docs/screenshots/13-music.jpg)
+
 ## Features
 
 - **Scroll-driven 3D hero** — 120 frames drawn to a canvas and scrubbed by
@@ -54,6 +58,10 @@ menu, gallery, hours, reviews, contact and location.
 - **Contact form that opens WhatsApp** with the visitor's name, address and query
   pre-filled, plus tap-to-call and tap-to-chat links. Nothing is sent to a server.
 - **Location** section with an embedded Google map and a directions button.
+- **Background music** — a soft cafe-style loop generated in the browser (no
+  audio file, nothing to license). Browsers only allow sound after a click, tap
+  or key press, so it starts on the visitor's first interaction. A speaker
+  button in the bottom-left corner mutes it, and the choice is remembered.
 - **Animation throughout** — smooth scrolling, word-by-word headings, staggered
   reveals, parallax photos and count-up figures.
 - **Responsive** from 375 px phones to wide desktops, with a slide-down mobile menu.
@@ -87,6 +95,7 @@ src/
   content.js            ALL text and data: menu, prices, hours, reviews, contact
   index.css             Colours, fonts and shared styles
   main.jsx              App entry and loading-screen timing
+  lib/ambience.js       The generated background music
   App.jsx               Section order, smooth scrolling, scroll animations
   components/           One file per section (HeroSequence, Menu, Contact, ...)
 docs/screenshots/       The images in this README
@@ -119,6 +128,7 @@ Almost everything is edited in one file, **`src/content.js`**:
 | Hours, address, phone, map link | `hours` and `location` in `src/content.js` |
 | WhatsApp number, email | `contact` in `src/content.js` (set `email` to show the email row) |
 | Reviews and stats | `testimonials` and `stats` in `src/content.js` |
+| Background music | `music` in `src/content.js` (leave `src` empty for the built-in loop, or point it at your own audio file) |
 | Hero frames | Replace the images in `public/frames` (played in filename order) |
 | Photos, logo, menu cards | Replace the files in `public/images` |
 | Colours and fonts | The `@theme` block at the top of `src/index.css` |
